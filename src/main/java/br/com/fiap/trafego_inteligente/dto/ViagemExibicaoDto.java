@@ -6,24 +6,17 @@ import jakarta.validation.constraints.Size;
 
 public record ViagemExibicaoDto(
         Long id,
-        @NotBlank(message = "Tamanho do Ônibus é obrigatório!")
+
         String tamanho_onibus,
 
-        @NotBlank(message = "Registro do Ônibus é obrigatório!")
         String registroOnibus,
 
-        @NotBlank(message = "Horário da saída é obrigatório!")
-        @Size(max = 7, message = "Horário de saída é apenas 7 caracteres")
         String hr_saida,
 
-        @NotBlank(message = "Horário de chegar é obrigatório!")
-        @Size(max = 7, message = "Horário de chegar é apenas 7 caracteres")
         String hr_chegar,
 
-        @NotBlank(message = "Informar a rota de saída é obrigatório!")
         String rota_saida,
 
-        @NotBlank(message = "Informar a rota de chegada é obrigatório!")
         String rota_chegada
 ) {
     public ViagemExibicaoDto(Viagem viagem) {

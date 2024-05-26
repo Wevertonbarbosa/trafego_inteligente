@@ -46,8 +46,8 @@ public class ViagemController {
 
     @PutMapping("/viagem")
     @ResponseStatus(HttpStatus.OK)
-    public Viagem atualizar(@RequestBody Viagem viagem) {
-        return service.atualizarViagem(viagem);
+    public ViagemExibicaoDto atualizar(@RequestBody @Valid ViagemGravarDto viagemGravarDto) {
+        return service.atualizarViagem(viagemGravarDto);
     }
 
     @GetMapping("/viagem/veiculo/{veiculo}")
@@ -63,11 +63,6 @@ public class ViagemController {
         return service.buscaPorRegistroOnibus(registroOnibus);
     }
 
-    ///api/viagem?veiculo=Ôninbus
-//    @GetMapping(value = "/viagem", params = "veiculo")
-//    public ViagemExibicaoDto buscarViagemPeloVeiculo(@RequestParam String veiculo){
-//        return service.buscaVeiculo(veiculo);
-//    }
 
 
 }

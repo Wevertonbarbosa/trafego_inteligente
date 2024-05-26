@@ -46,10 +46,13 @@ public class ViagemService {
         }
     }
 
-    public Viagem atualizarViagem(Viagem viagem) {
-        Optional<Viagem> viagemOptional = repository.findById(viagem.getId());
+    public ViagemExibicaoDto atualizarViagem(ViagemGravarDto viagemGravarDto) {
+        Viagem viagem = new Viagem();
+        BeanUtils.copyProperties(viagemGravarDto, viagem);
+        Optional<Viagem> viagemOptional = repository.findById(viagemGravarDto.id());
+
         if (viagemOptional.isPresent()) {
-            return repository.save(viagem);
+            return new ViagemExibicaoDto(repository.save(viagem));
         } else {
             throw new ViagemNaoEncontradaException("Viagem não encontrada!");
         }
